@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This script creates a Flask web application with a single route.
+This script creates a Flask web application with two routes.
 """
 
 from flask import Flask
@@ -14,6 +14,14 @@ def hello_hbnb():
     Display 'Hello HBNB!' when the root URL is accessed.
     """
     return 'Hello HBNB!'
+
+
+@app.route('/hbnb', strict_slashes=False)
+def display_hbnb():
+    """
+    Display 'HBNB' when /hbnb is accessed.
+    """
+    return 'HBNB'
 
 
 if __name__ == "__main__":
