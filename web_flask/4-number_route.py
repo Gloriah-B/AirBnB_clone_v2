@@ -45,9 +45,8 @@ def isanumber(n):
     """
     Display 'n is a number' if n is an integer.
     """
-    if isinstance(n, int):
     return "{:d} is a number".format(n)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port='5000')
