@@ -54,9 +54,12 @@ def number_template(n):
 def number_odd_or_even(n):
     """Render template based on conditional
     """
-    path = '6-number_odd_or_even.html'
-    return render_template(path, n=n)
+    if n % 2 == 0:
+        evenness = 'even'
+    else:
+        evenness = 'odd'
+    return render_template('6-number_odd_or_even.html', n=n,
+                           evenness=evenness)
 
 if __name__ == '__main__':
-    app.url_map.strict_slashes = False
     app.run(host='0.0.0.0', port=5000)
