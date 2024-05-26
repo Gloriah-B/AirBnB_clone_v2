@@ -1,17 +1,3 @@
-#!/usr/bin/python3
-"""This is the file storage class for AirBnB"""
-
-
-from datetime import datetime
-import inspect
-import models
-from models.engine import file_storage
-from models.amenity import Amenity
-from models.base_model import BaseModel
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
 from models.user import User
 import json
 import os
@@ -112,3 +98,5 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     114,18        Bot
