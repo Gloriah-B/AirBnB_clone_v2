@@ -3,14 +3,12 @@
 This script creates a Flask web application with five routes.
 """
 
-from flask import Flask, abort
-from urllib.parse import unquote
-
+from flask import Flask
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def hello_hbnb():
+def index():
     """
     Display 'Hello HBNB!' when the root URL is accessed.
     """
@@ -18,7 +16,7 @@ def hello_hbnb():
 
 
 @app.route('/hbnb', strict_slashes=False)
-def display_hbnb():
+def hbnb():
     """
     Display 'HBNB' when /hbnb is accessed.
     """
@@ -26,38 +24,29 @@ def display_hbnb():
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def display_c_text(text):
+def c_text(text):
     """
     Display 'C ' followed by the value of the text variable.
-    Replace underscore _ symbols with a space.
     """
-    text = unquote(text)  # Decode URL-encoded text
-    text = text.replace('_', ' ')  # Replace underscores with spaces
-    return 'C {}'.format(text)
+    return 'C ' + text.replace('_', ' ')
 
 
-@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def display_python_text(text):
+def python_text(text='is cool'):
     """
     Display 'Python ' followed by the value of the text variable.
-    If no text is provided, use 'is cool' as the default.
     """
-    text = unquote(text)  # Decode URL-encoded text
-    text = text.replace('_', ' ') if text else 'is cool'
-    return 'Python {}'.format(text)
+    return 'Python ' + text.replace('_', ' ')
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
-def display_number(n):
+def number(n):
     """
     Display 'n is a number' if n is an integer.
-    Otherwise, return a 404 error.
     """
     if isinstance(n, int):
-        return '{} is a number'.format(n)
-    else:
-        abort(404)
+    return '{:d} is a number'.format(n)
 
 
 if __name__ == "__main__":
