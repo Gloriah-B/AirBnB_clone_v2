@@ -4,13 +4,11 @@ This script creates a Flask web application with a single route.
 """
 
 from flask import Flask
-
 app = Flask(__name__)
 
 
-# Define the route for the root URL '/'
 @app.route('/', strict_slashes=False)
-def hello_hbnb():
+def index():
     """
     Display 'Hello HBNB!' when the root URL is accessed.
     """
