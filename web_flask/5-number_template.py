@@ -1,55 +1,59 @@
 #!/usr/bin/python3
-"""Start web application with two routings
-"""
+
+    """
+    Start web application with two routings
+    """
 
 from flask import Flask, render_template
 app = Flask(__name__)
 
-
-@app.route('/')
-def hello():
-    """Return string when route queried
+@app.route('/', strict_slashes=False)
+def index():
+    """
+    Display 'Hello HBNB!' when the root URL is accessed.
     """
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb')
+@app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    """Return string when route queried
+    """
+    Display 'HBNB' when /hbnb is accessed.
     """
     return 'HBNB'
 
 
-@app.route('/c/<text>')
-def c_is_fun(text):
-    """Return reformatted text
+@app.route('/c/<text>', strict_slashes=False)
+def c_text(text):
+    """
+    Display 'C ' followed by the value of the text variable.
     """
     return 'C ' + text.replace('_', ' ')
 
 
-@app.route('/python/')
-@app.route('/python/<text>')
-def python_with_text(text='is cool'):
-    """Reformat text based on optional variable
+@app.route('/python/', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def python_text(text='is cool'):
+    """
+    Display 'Python ' followed by the value of the text variable.
     """
     return 'Python ' + text.replace('_', ' ')
 
 
-@app.route('/number/<int:n>')
-def number(n=None):
-    """Allow request if path variable is a valid integer
+@app.route('/number/<int:n>', strict_slashes=False)
+def isanumber(n):
     """
-    return str(n) + ' is a number'
+    Display 'n is a number' if n is an integer.
+    """
+    return "{:d} is a number".format(n)
 
 
-@app.route('/number_template/<int:n>')
+@app.route('/number_template/<int:n>', strict_slashes=false)
 def number_template(n):
     """Retrieve template for request
     """
-    path = '5-number.html'
-    return render_template(path, n=n)
+    return render_template('5-number.html', n=n)
 
 
 if __name__ == '__main__':
-    app.url_map.strict_slashes = False
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port='5000')
