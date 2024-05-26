@@ -4,13 +4,11 @@ This script creates a Flask web application with three routes.
 """
 
 from flask import Flask
-from urllib.parse import unquote
-
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def hello_hbnb():
+def index():
     """
     Display 'Hello HBNB!' when the root URL is accessed.
     """
@@ -18,7 +16,7 @@ def hello_hbnb():
 
 
 @app.route('/hbnb', strict_slashes=False)
-def display_hbnb():
+def hbnb():
     """
     Display 'HBNB' when /hbnb is accessed.
     """
@@ -29,10 +27,9 @@ def display_hbnb():
 def display_c_text(text):
     """
     Display 'C ' followed by the value of the text variable.
-    Replace underscore _ symbols with a space.
     """
-    text = unquote(text)  # Decode URL-encoded text
-    text = text.replace('_', ' ')  # Replace underscores with spaces
+    text = unquote(text)
+    text = text.replace('_', ' ')
     return 'C {}'.format(text)
 
 
