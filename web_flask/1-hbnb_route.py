@@ -4,12 +4,11 @@ This script creates a Flask web application with two routes.
 """
 
 from flask import Flask
-
 app = Flask(__name__)
 
 
 @app.route('/', strict_slashes=False)
-def hello_hbnb():
+def index():
     """
     Display 'Hello HBNB!' when the root URL is accessed.
     """
@@ -17,7 +16,7 @@ def hello_hbnb():
 
 
 @app.route('/hbnb', strict_slashes=False)
-def display_hbnb():
+def hbnb():
     """
     Display 'HBNB' when /hbnb is accessed.
     """
